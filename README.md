@@ -96,7 +96,26 @@ mkdir -p config
 # You'll need a config.toml file - see examples/01_basic_goal_seek.py
 ```
 
-### 3. Run Example Scripts
+### 3. Run Examples
+
+#### Option A: Interactive Jupyter Notebook (Recommended)
+
+```bash
+# Install notebook dependencies
+uv sync --extra notebook
+
+# Launch Jupyter notebook (from project root or examples directory)
+uv run jupyter notebook examples/EPP_Examples.ipynb
+```
+
+The notebook:
+- Automatically adjusts the working directory to find config files
+- Provides step-by-step explanations
+- Includes interactive code cells
+- Generates visualizations and charts
+- Contains all examples in one place
+
+#### Option B: Python Scripts
 
 ```bash
 # Example 1: Basic goal seek
@@ -113,6 +132,28 @@ uv run python examples/04_full_model_run.py
 ```
 
 ## Example Scripts
+
+### Jupyter Notebook (Recommended for Learning)
+
+**[EPP_Examples.ipynb](examples/EPP_Examples.ipynb)** - Interactive notebook covering all examples:
+- Basic goal seek with presets
+- Custom ACCU volumes
+- Batch sensitivity analysis
+- Visualizations and exports
+- Step-by-step explanations
+
+To use the notebook:
+```bash
+# Install Jupyter dependencies
+uv sync --extra notebook
+
+# Start Jupyter (from project root or examples directory)
+uv run jupyter notebook examples/EPP_Examples.ipynb
+
+# The notebook automatically adjusts the working directory
+```
+
+### Python Scripts
 
 ### 01_basic_goal_seek.py
 Demonstrates basic goal seek using presets:
@@ -147,6 +188,7 @@ epp-example-external-usage/
 ├── .env.example                # GitHub token template
 ├── .gitignore                  # Git ignore rules
 ├── examples/
+│   ├── EPP_Examples.ipynb      # Interactive Jupyter notebook (recommended)
 │   ├── 01_basic_goal_seek.py
 │   ├── 02_custom_accu_volumes.py
 │   ├── 03_batch_analysis.py
