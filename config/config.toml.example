@@ -1,0 +1,227 @@
+# EPP Screening Model v3 Configuration
+# Australian Carbon Credit (ACCU) Financial Analysis
+# Unified single-configuration approach (no multiple scenarios)
+
+# Performance settings
+enable_statistics = false  # Calculate quarterly data statistics (min/max/totals). Disable for better performance.
+
+# CSV data file paths (relative to config file)
+data_directory = "data/csv_inputs"
+
+[csv_data_paths]
+# Core parameter files
+static_parameters = "ass_static_params.csv"
+project_assumptions = "project_assumptions.csv"
+
+# Time-series data files
+escalation_rates = "ass_dyn_escalations_full_109q.csv"
+devx_allocation = "devx_allocations_quarterly.csv"
+accu_price_curve = "accu_price_curve_quarterly.csv"
+
+# Validation and reference files
+
+# Sheet-specific configuration files
+
+# Validation settings
+[validation]
+enabled = true
+strict_mode = false          # If true, validation errors stop execution
+tolerance_percentage = 0.01  # 1% tolerance for numerical comparisons
+validate_against_excel = true # Enable Excel output comparison
+excel_reference_file = "Environmental Plantings Projects - Screening Model.xlsx"
+
+# Quarterly time axis configuration
+[quarterly_time_axis]
+use_australian_fiscal_year = true
+fiscal_year_start_month = 7     # July 1st start
+fiscal_year_end_month = 6       # June 30th end
+quarter_naming_convention = "Q1FY26" # Q1FY26, Q2FY26, etc.
+include_half_year_markers = true
+include_annual_totals = true
+
+# Sheet processing order (dependency-aware)
+[processing_order]
+sheet_dependencies = [
+    "Ass_Static",      # Foundation - no dependencies
+    "Summary",         # Control panel
+    "Ass_Dyn",         # Dynamic assumptions
+    "PrjCF_Qtr",       # Quarterly cash flows
+    "Financing_Qtr",   # Debt financing
+    "Acc_Qtr",         # Accounting statements
+    "Returns_Prj",     # Returns analysis
+    "Summary_A",       # Annual summaries
+    "Checks"           # Validation
+]
+
+# Processing configuration
+max_iterations_circular_refs = 50
+convergence_tolerance = 0.0001
+enable_performance_monitoring = true
+enable_detailed_logging = false
+
+# ====================================
+# CONSOLIDATED STATIC CONFIGURATION
+# ====================================
+
+[static]
+# Consolidated static configuration (100 CONFIG_LOAD parameters)
+
+# Share Of Cash Flow
+config_1st_hurdle_investor_shared_cashflow = 1.0  # 1st hurdle - Investor shared cashflow (Row 28)
+config_spare_upside_share_29 = 1.0  # [spare] upside share (Row 29)
+config_spare_upside_share_30 = 1.0  # [spare] upside share (Row 30)
+config_investor_upside_share = 1.0  # Investor upside share (Row 32)
+config_spare_upside_share_33 = 1.0  # [spare] upside share (Row 33)
+config_spare_upside_share_34 = 1.0  # [spare] upside share (Row 34)
+
+# General
+config_project_name = "Screening"  # Project name (Row 38)
+config_model_start_date = "2025-01-01"  # Model start date (Row 39)
+config_fiscal_year_end_month = 6  # Fiscal year end month (Row 40)
+config_quarters_in_year = 4  # Quarters in year (Row 41)
+config_months_in_year = 12  # Months in year (Row 42)
+config_months_in_quarter = 3  # Months in quarter (Row 43)
+config_days_in_year = 365  # Days in year (Row 44)
+config_thousands = 1000  # Thousands (Row 45)
+config_million = 1000000  # Million (Row 46)
+
+# Property Switch
+config_property_switch = 1  # Property Switch (Row 50)
+
+# Macro
+config_development_expenditures = 1  # Development expenditures (Row 58)
+config_carbon_operating_costs = 1  # Carbon operating costs (Row 59)
+config_farm_operating_costs = 1  # Farm operating costs (Row 60)
+config_cpi_index_spot_price_accus = 3  # CPI index - spot price ACCUs (Row 61)
+
+# Transaction Assumptions
+config_valuation_date = "2025-06-30"  # Valuation date (Row 65)
+config_investment_date_year_start = "2025-06-30"  # Investment date - year start (Row 66)
+config_accu_start_date = "2026-12-31"  # ACCU Start Date (Row 67)
+
+# Land And Development Expenditure
+config_property_price = 4500  # Property Price (Row 74)
+config_development_expenditure_real_base_date = "2025-06-30"  # Development expenditure real base date (Row 87)
+config_development_expenditure_year_0_date_cost_is_incurred = "2025-06-30"  # Development expenditure (Year 0) - Date cost is incurred (Row 88)
+config_production_start_accus_accruing = "2025-12-31"  # Production start (ACCUs accruing) (Row 89)
+config_variable_cost_per_hectar = 3.5  # Variable (cost per hectar) (Row 92)
+config_case_selected = 1  # Case Selected (Row 93)
+
+# Operational Assumptions
+config_hectares_by_project_arable_area = 1823  # Hectares by project (arable area) (Row 100)
+config_hectares_by_project_carbon_area = 1823  # Hectares by project (carbon area) (Row 101)
+config_hectares_by_project_plantable_area = 785  # Hectares by project (plantable area) (Row 102)
+config_fullcam_project_area = 785  # Fullcam project area (Row 103)
+config_project_useful_contractual_life = 27  # Project useful contractual life (Row 132)
+config_accus_issuance_curve_sensitivity_138 = 1.0  # ACCUs issuance curve - sensitivity % (Row 138)
+config_share_of_accus_pre_pastoral_commission = 1.0  # Share of ACCUs (pre pastoral commission) (Row 142)
+config_offtaker_fixed_price_volume = 0.0  # Offtaker fixed price volume (Row 143)
+config_offtake_start_date = "2025-01-01"  # Offtake start date (Row 147)
+config_offtake_term = 9  # Offtake term (Row 148)
+config_accus_volumes_fixed_price_volume = 0.0  # ACCUs volumes - Fixed price volume (Row 149)
+config_accus_volumes_fixed_price = 1  # ACCUs volumes - Fixed price (Row 150)
+config_accus_volumes_pricing_cap = 120  # ACCUs volumes - Pricing cap (Row 151)
+config_accus_spot_price_real_base_date = "2025-01-01"  # ACCUs spot price (real base date) (Row 156)
+config_accu_floating_curve = 1  # ACCU floating curve (Row 158)
+config_accus_price_cap = 120  # ACCUs price cap (Row 159)
+config_co_lease_revenue_switch_1_on_0_off = 0  # Co-lease revenue switch (1=on; 0=off) (Row 163)
+config_land_sale_switch_1_on_0_off = 0  # Land sale switch (1=on; 0=off) (Row 164)
+config_post_planted_capacity = 0.60  # Post Planted Capacity (Row 165)
+#config_cap_rate_on_book_value_y0 = 0.0  # Cap Rate on Book Value - Y0 (Row 166)
+config_carbon_land_co_lease_date = "2030-01-01"  # Carbon land co-lease date (Row 167)
+config_escalator = 1  # Escalator (Row 168)
+config_co_lease_revenue_real_base_date = "2025-01-01"  # Co-lease revenue real base date (Row 169)
+config_land_value_growth = 3  # Land value growth (Row 170)
+config_in_year_uplift = 0  # In-Year Uplift (Row 171)
+config_operating_expenditure_real_base_date = "2025-01-01"  # Operating expenditure real base date (Row 175)
+config_indigenous_community_payments_of_revenues = 0.0  # Indigenous community payments (% of revenues) (Row 176)
+config_farm_manager = 0.0  # Farm Manager (Row 178)
+config_environmental_plantings_internal_allocation = 0.0  # Environmental Plantings Internal Allocation (Row 179)
+config_bookkeeper = 0.0  # Bookkeeper (Row 180)
+config_additional_opex = 6.25  # Additional Opex (Row 181)
+config_annual_maintenance_capex = 18.75  # Annual Maintenance Capex (Row 182)
+config_travel = 0.0  # Travel (Row 183)
+config_superannuation = 0.0  # Superannuation (Row 184)
+config_employment_oncosts = 0.0  # Employment Oncosts (Row 185)
+config_management_fee = 0.0  # Management Fee (Row 186)
+
+# Funding
+config_debt_term_drawdown = "2027-12-31"  # Debt term drawdown (Row 192)
+config_debt_term = 20  # Debt term (Row 193)
+config_cash_interest_payment_start_date = "2024-12-31"  # Cash interest payment start date (Row 195)
+config_lvr_to_property_value = 0.96  # LVR to Property Value (Row 197)
+config_all_in_quarterly_interest_rate = 0.016875  # All-in quarterly interest rate (Row 205)
+config_cash_sweep_percentage = 0.0  # Cash sweep percentage (Row 208)
+config_principal_repayment_amortisation = 1.0  # Principal repayment amortisation % (Row 209)
+config_dsra_requirement_start_date = ""  # DSRA requirement start date (Row 212)
+config_debt_reserve_account_minimum_amount_interest = 0  # Debt reserve account minimum amount (interest) (Row 213)
+config_debt_reserve_account_minimum_amount_principal_selector = 1  # Debt reserve account minimum amount (principal) selector (Row 215)
+config_debt_reserve_account_minimum_amount_principal = 0  # Debt reserve account minimum amount (principal) (Row 216)
+config_lock_up_dscr = 0.0  # Lock up DSCR (Row 220)
+config_cash_sweep_dscr = 0.0  # Cash sweep DSCR (Row 221)
+config_minimum_operating_reserve_account = 0.0  # Minimum Operating Reserve Account (Row 225)
+config_minimum_operating_reserve_account_start_date = "2025-01-01"  # Minimum Operating Reserve Account start date (Row 226)
+config_ongoing_minimum_cash_balance = 0.0  # Ongoing minimum cash balance (Row 228)
+config_ongoing_minimum_cash_balance_start_date = "2025-01-01"  # Ongoing minimum cash balance start date (Row 229)
+config_distributions = 1.0  # Distributions (Row 231)
+config_tax_rate = 0.0  # Tax rate (Row 233)
+config_tax_d_a = 5.0  # Tax D&A (Row 234)
+config_tax_losses_starting_balance = 0.0  # Tax losses starting balance (Row 235)
+
+# Prepayment
+config_drawdown_date = ""  # Drawdown date (Row 239)
+config_years = 0.0  # Years (Row 240)
+config_delivery_timing_t = 0.0  # Delivery timing T (Row 241)
+config_delivery_timing_t_1 = 0.0  # Delivery timing T+1 (Row 242)
+config_accus_price_curve_prepayment = 0  # ACCUs price curve - prepayment (Row 243)
+config_prepyament_valuation_date = ""  # Prepyament valuation date (Row 244)
+config_discount_rate = 0.0  # Discount rate (Row 245)
+config_accus_price_cap_real_prepayment = 0.0  # ACCUs price cap (real) - prepayment (Row 246)
+
+# Exit
+config_exit_date = "2031-06-30"  # Exit Date (Row 250)
+config_incoming_wacc = 0.09  # Incoming WACC (Row 251)
+
+# Investor Economics Assumptions
+config_investor_transaction_costs = 100.0  # Investor transaction costs (Row 255)
+config_financier_transaction_costs = 0.0  # Financier transaction costs (Row 256)
+config_re_spend_capex = 0.0  # Re-spend Capex (Row 257)
+config_sale_of_land = 0.0  # Sale of land (Row 258)
+
+# ACCU Volume Configuration (27 annual values)
+# Moved from CSV to TOML for better version control and consistency
+# Property 1: Default ACCU production volumes (ACCUs generated per year)
+accu_volumes_property_1 = [
+    0.0,                   # Year 0
+    4500.0,                # Year 1
+    16403.66873132810,     # Year 2
+    24523.443238174900,    # Year 3
+    28622.076812895600,    # Year 4
+    29936.260306053400,    # Year 5
+    29654.329294708600,    # Year 6
+    28532.695588940300,    # Year 7
+    27007.933008524400,    # Year 8
+    25324.570223657500,    # Year 9
+    23617.490851705000,    # Year 10
+    21959.436745894100,    # Year 11
+    20387.753151997700,    # Year 12
+    18919.513475946900,    # Year 13
+    17560.189950309300,    # Year 14
+    16308.699471250500,    # Year 15
+    15160.376844719000,    # Year 16
+    14108.739894062500,    # Year 17
+    13146.537527822800,    # Year 18
+    12266.365989932500,    # Year 19
+    11461.022286561400,    # Year 20
+    10723.696725176600,    # Year 21
+    10048.067058779400,    # Year 22
+    9428.332905471740,     # Year 23
+    8859.214745759060,     # Year 24
+    0.0,                   # Year 25
+    0.0                    # Year 26
+]
+
+# Properties 2-4: Not used in current model (defaults to zeros if needed)
+# accu_volumes_property_2 = []
+# accu_volumes_property_3 = []
+# accu_volumes_property_4 = []
