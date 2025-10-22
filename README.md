@@ -108,12 +108,12 @@ uv sync --extra notebook
 uv run jupyter notebook examples/EPP_Examples.ipynb
 ```
 
-The notebook:
-- Automatically adjusts the working directory to find config files
-- Provides step-by-step explanations
-- Includes interactive code cells
-- Generates visualizations and charts
-- Contains all examples in one place
+The notebooks:
+- Automatically adjust the working directory to find config files
+- Provide step-by-step explanations with interactive code cells
+- Generate professional visualizations and charts
+- Include comprehensive examples and use cases
+- Export results in multiple formats (CSV, Excel, PNG)
 
 #### Option B: Python Scripts
 
@@ -133,24 +133,33 @@ uv run python examples/04_full_model_run.py
 
 ## Example Scripts
 
-### Jupyter Notebook (Recommended for Learning)
+### Jupyter Notebooks (Recommended for Learning)
 
-**[EPP_Examples.ipynb](examples/EPP_Examples.ipynb)** - Interactive notebook covering all examples:
+#### **[EPP_Examples.ipynb](examples/EPP_Examples.ipynb)** - Goal Seek & Scenarios
+Interactive notebook covering goal seek and scenario analysis:
 - Basic goal seek with presets
 - Custom ACCU volumes
 - Batch sensitivity analysis
 - Visualizations and exports
 - Step-by-step explanations
 
-To use the notebook:
+#### **[EPP_Metrics_Examples.ipynb](examples/EPP_Metrics_Examples.ipynb)** - Metrics Extraction (v1.1.0+) ⭐ NEW
+Comprehensive metrics extraction and analysis:
+- **50+ metrics** across 6 categories
+- Automatic extraction from all 9 sheets
+- Financial performance dashboards
+- Scenario-based metrics comparison
+- Professional reporting and exports
+
+To use the notebooks:
 ```bash
 # Install Jupyter dependencies
 uv sync --extra notebook
 
 # Start Jupyter (from project root or examples directory)
-uv run jupyter notebook examples/EPP_Examples.ipynb
+uv run jupyter notebook examples/
 
-# The notebook automatically adjusts the working directory
+# The notebooks automatically adjust the working directory
 ```
 
 ### Python Scripts
@@ -183,21 +192,22 @@ Demonstrates full model execution:
 
 ```
 epp-example-external-usage/
-├── README.md                    # This file
-├── pyproject.toml              # UV project configuration
-├── .env.example                # GitHub token template
-├── .gitignore                  # Git ignore rules
+├── README.md                       # This file
+├── pyproject.toml                  # UV project configuration
+├── .env.example                    # GitHub token template
+├── .gitignore                      # Git ignore rules
 ├── examples/
-│   ├── EPP_Examples.ipynb      # Interactive Jupyter notebook (recommended)
+│   ├── EPP_Examples.ipynb          # Goal seek & scenarios (recommended)
+│   ├── EPP_Metrics_Examples.ipynb  # Metrics extraction (v1.1.0+) ⭐ NEW
 │   ├── 01_basic_goal_seek.py
 │   ├── 02_custom_accu_volumes.py
 │   ├── 03_batch_analysis.py
 │   └── 04_full_model_run.py
 ├── config/
-│   └── config.toml             # Model configuration
+│   └── config.toml                 # Model configuration
 ├── data/
-│   └── scenarios/              # Custom scenario files
-└── results/                    # Output directory
+│   └── scenarios/                  # Custom scenario files
+└── results/                        # Output directory
 ```
 
 ## Configuration
