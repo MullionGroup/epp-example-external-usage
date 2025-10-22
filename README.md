@@ -40,25 +40,25 @@ This example shows how an external team or scientist can:
 
 3. **Install the EPP package**:
    ```bash
-   # Using UV (recommended) - specify v1.0.9 or later
-   uv add "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.0.9"
+   # Using UV (recommended) - specify v1.1.0 or later
+   uv add "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
 
    # Or using pip
-   pip install "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.0.9"
+   pip install "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
    ```
 
-   **Important**: Version 1.0.9 or later is required for the Jupyter helper functions.
+   **Important**: Version 1.1.0 or later is required for the Jupyter helper functions.
 
 ### Option 2: Using SSH Keys (For Developers)
 
 If you have SSH keys configured with GitHub:
 
 ```bash
-# Using UV - specify v1.0.9 or later
-uv add "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.0.9"
+# Using UV - specify v1.1.0 or later
+uv add "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
 
 # Or using pip
-pip install "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.0.9"
+pip install "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
 ```
 
 ### Option 3: Using GitHub CLI (Easiest for macOS)
@@ -69,8 +69,8 @@ If you have GitHub CLI installed and authenticated:
 # Authenticate first (uses 1Password/Keychain)
 gh auth login
 
-# Install package - specify v1.0.9 or later
-uv add "git+https://github.com/MullionGroup/epp_screening_model_v3.git@v1.0.9"
+# Install package - specify v1.1.0 or later
+uv add "git+https://github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
 ```
 
 ## Quick Start
@@ -230,7 +230,7 @@ print(f"Optimal LVR: {result.solution:.2%}")
 print(f"Levered Return: {result.levered_return:.2%}")
 ```
 
-### Goal Seek with Custom ACCU Volumes (v1.0.9+)
+### Goal Seek with Custom ACCU Volumes (v1.1.0+)
 
 **Recommended Method** - Using Jupyter helpers:
 
@@ -248,7 +248,7 @@ print(f"Optimal LVR: {result.solution:.2%}")
 print(f"Levered Return: {result.levered_return:.2%}")
 ```
 
-### Batch Sensitivity Analysis (v1.0.9+)
+### Batch Sensitivity Analysis (v1.1.0+)
 
 ```python
 from epp_screening_model_v3.notebooks.epp_jupyter_helpers import batch_goal_seek_analysis
@@ -350,14 +350,15 @@ This example project is for demonstration purposes. The EPP Screening Model pack
 ## Version Compatibility
 
 This example project requires:
-- **EPP Screening Model v1.0.9 or later** (for Jupyter helper functions)
+- **EPP Screening Model v1.1.0 or later** (for Jupyter helper functions)
 - **Python 3.12+**
 - **UV 0.5.0+** (recommended) or pip
 
-**Breaking Changes**:
+**Version History**:
 - v1.0.6: Package build was broken (skip this version)
 - v1.0.7: Fixed package imports
 - v1.0.8: Added scenario class exports
-- v1.0.9: **Recommended** - Includes Jupyter helpers for convenient API
+- v1.0.9: Includes Jupyter helpers for convenient API
+- v1.1.0: **Recommended** - Latest stable release
 
 Last updated: 2025-10-21
