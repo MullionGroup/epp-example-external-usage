@@ -16,7 +16,6 @@ project_assumptions = "project_assumptions.csv"
 # Time-series data files
 escalation_rates = "ass_dyn_escalations_full_109q.csv"
 devx_allocation = "devx_allocations_quarterly.csv"
-accu_price_curve = "accu_price_curve_quarterly.csv"
 
 # Validation and reference files
 
@@ -225,3 +224,17 @@ accu_volumes_property_1 = [
 # accu_volumes_property_2 = []
 # accu_volumes_property_3 = []
 # accu_volumes_property_4 = []
+
+# ACCU Pricing Configuration (v1.1.1+)
+# Replaces the deprecated accu_price_curve.csv approach
+[accu_pricing]
+# Mode: "constant" (single price for all quarters) or "curve" (109 quarterly prices)
+mode = "constant"
+
+# For constant mode: Single price applied to all quarters
+constant_price = 47.0  # $/ACCU (matches previous accu_price_curve_quarterly.csv value)
+
+# For curve mode: Provide 109 quarterly price values
+# quarterly_prices = [
+#     47.0, 47.0, 47.0, ...  # 109 values total
+# ]
