@@ -40,25 +40,25 @@ This example shows how an external team or scientist can:
 
 3. **Install the EPP package**:
    ```bash
-   # Using UV (recommended) - specify v1.1.0 or later
-   uv add "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
+   # Using UV (recommended) - specify v1.1.1 or later
+   uv add "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.1"
 
    # Or using pip
-   pip install "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
+   pip install "git+https://${GITHUB_TOKEN}@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.1"
    ```
 
-   **Important**: Version 1.1.0 or later is required for the Jupyter helper functions.
+   **Important**: Version 1.1.1 or later is required for the Jupyter helper functions.
 
 ### Option 2: Using SSH Keys (For Developers)
 
 If you have SSH keys configured with GitHub:
 
 ```bash
-# Using UV - specify v1.1.0 or later
-uv add "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
+# Using UV - specify v1.1.1 or later
+uv add "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.1"
 
 # Or using pip
-pip install "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
+pip install "git+ssh://git@github.com/MullionGroup/epp_screening_model_v3.git@v1.1.1"
 ```
 
 ### Option 3: Using GitHub CLI (Easiest for macOS)
@@ -69,8 +69,8 @@ If you have GitHub CLI installed and authenticated:
 # Authenticate first (uses 1Password/Keychain)
 gh auth login
 
-# Install package - specify v1.1.0 or later
-uv add "git+https://github.com/MullionGroup/epp_screening_model_v3.git@v1.1.0"
+# Install package - specify v1.1.1 or later
+uv add "git+https://github.com/MullionGroup/epp_screening_model_v3.git@v1.1.1"
 ```
 
 ## Quick Start
@@ -143,7 +143,7 @@ Interactive notebook covering goal seek and scenario analysis:
 - Visualizations and exports
 - Step-by-step explanations
 
-#### **[EPP_Metrics_Examples.ipynb](examples/EPP_Metrics_Examples.ipynb)** - Metrics Extraction (v1.1.0+) ⭐ NEW
+#### **[EPP_Metrics_Examples.ipynb](examples/EPP_Metrics_Examples.ipynb)** - Metrics Extraction (v1.1.1+) ⭐ NEW
 Comprehensive metrics extraction and analysis:
 - **50+ metrics** across 6 categories
 - Automatic extraction from all 9 sheets
@@ -198,7 +198,7 @@ epp-example-external-usage/
 ├── .gitignore                      # Git ignore rules
 ├── examples/
 │   ├── EPP_Examples.ipynb          # Goal seek & scenarios (recommended)
-│   ├── EPP_Metrics_Examples.ipynb  # Metrics extraction (v1.1.0+) ⭐ NEW
+│   ├── EPP_Metrics_Examples.ipynb  # Metrics extraction (v1.1.1+) ⭐ NEW
 │   ├── 01_basic_goal_seek.py
 │   ├── 02_custom_accu_volumes.py
 │   ├── 03_batch_analysis.py
@@ -240,7 +240,7 @@ print(f"Optimal LVR: {result.solution:.2%}")
 print(f"Levered Return: {result.levered_return:.2%}")
 ```
 
-### Goal Seek with Custom ACCU Volumes (v1.1.0+)
+### Goal Seek with Custom ACCU Volumes (v1.1.1+)
 
 **Recommended Method** - Using Jupyter helpers:
 
@@ -258,7 +258,7 @@ print(f"Optimal LVR: {result.solution:.2%}")
 print(f"Levered Return: {result.levered_return:.2%}")
 ```
 
-### Batch Sensitivity Analysis (v1.1.0+)
+### Batch Sensitivity Analysis (v1.1.1+)
 
 ```python
 from epp_screening_model_v3.notebooks.epp_jupyter_helpers import batch_goal_seek_analysis
@@ -360,7 +360,7 @@ This example project is for demonstration purposes. The EPP Screening Model pack
 ## Version Compatibility
 
 This example project requires:
-- **EPP Screening Model v1.1.0 or later** (for Jupyter helper functions)
+- **EPP Screening Model v1.1.1 or later** (for Jupyter helper functions)
 - **Python 3.12+**
 - **UV 0.5.0+** (recommended) or pip
 
@@ -369,6 +369,16 @@ This example project requires:
 - v1.0.7: Fixed package imports
 - v1.0.8: Added scenario class exports
 - v1.0.9: Includes Jupyter helpers for convenient API
-- v1.1.0: **Recommended** - Latest stable release
+- v1.1.0: Metrics system and advanced notebooks
+- v1.1.1: **Recommended** - ACCU pricing config migration, parametric scenarios, Excel enhancements
 
-Last updated: 2025-10-21
+**v1.1.1 Changes**:
+- **BREAKING**: ACCU pricing migrated from CSV to config-only architecture
+  - Removed `accu_price_curve_quarterly.csv` - now configured in `config.toml`
+  - Two modes: `constant` (single price) or `curve` (109 quarterly prices)
+  - See `config/config.toml` `[accu_pricing]` section for details
+- Added parametric scenario generation with config-matching names
+- Excel zero-blank formatting for professional output
+- Enhanced comparison scripts with rich terminal output
+
+Last updated: 2025-10-25
