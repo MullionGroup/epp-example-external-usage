@@ -26,7 +26,7 @@ notebook = [
 dev-dependencies = []
 
 [tool.uv.sources]
-# Using local development version for testing v1.1.2 CSV-to-config migration
-epp-screening-model-v3 = { path = "../epp_screening_model_v3_clean", editable = true }
-# Production: Use git tag instead
-# epp-screening-model-v3 = { git = "https://github.com/MullionGroup/epp_screening_model_v3.git", rev = "v1.1.2" }
+# Using v1.1.2 release with CSV-to-config migration
+epp-screening-model-v3 = { git = "https://github.com/MullionGroup/epp_screening_model_v3.git", rev = "v1.1.2" }
+# For local development testing:
+# epp-screening-model-v3 = { path = "../epp_screening_model_v3_clean", editable = true }
