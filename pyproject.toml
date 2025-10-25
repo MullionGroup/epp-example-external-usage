@@ -26,7 +26,7 @@ notebook = [
 dev-dependencies = []
 
 [tool.uv.sources]
-epp-screening-model-v3 = { git = "https://github.com/MullionGroup/epp_screening_model_v3.git", rev = "v1.1.1" }
-# EPP Screening Model from GitHub
-# Install using: uv add git+https://github.com/MullionGroup/epp_screening_model_v3.git
-# See README.md for authentication options
+# Using local development version for testing v1.1.2 CSV-to-config migration
+epp-screening-model-v3 = { path = "../epp_screening_model_v3_clean", editable = true }
+# Production: Use git tag instead
+# epp-screening-model-v3 = { git = "https://github.com/MullionGroup/epp_screening_model_v3.git", rev = "v1.1.2" }
