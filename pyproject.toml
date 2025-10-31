@@ -26,7 +26,8 @@ notebook = [
 dev-dependencies = []
 
 [tool.uv.sources]
+epp-screening-model-v3 = { path = "epp_screening_model_v3-1.2.3-py3-none-any.whl" }
 # Using v1.1.4 release with Excel Template Writer and GR Analysis improvements
-epp-screening-model-v3 = { git = "https://github.com/MullionGroup/epp_screening_model_v3.git", rev = "v1.1.4" }
+# epp-screening-model-v3 = { git = "https://github.com/MullionGroup/epp_screening_model_v3.git", rev = "v1.1.4" }
 # For local development testing:
 # epp-screening-model-v3 = { path = "../epp_screening_model_v3_clean", editable = true }
